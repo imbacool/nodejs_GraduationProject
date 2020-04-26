@@ -2,6 +2,7 @@ const express = require('express')
 const multer = require('multer')
 const fs = require('fs')
 const path = require('path')
+
 const upload = multer({})
 const router = express.Router()
 
@@ -27,4 +28,5 @@ router.post('/img', upload.single('img'), (req, res) => {
         }
     })
 })
+
 module.exports = router
