@@ -3,14 +3,14 @@ const mongoose = require("mongoose");
 
 let teachScheduleSchema = new mongoose.Schema({
     teacherID: {
-        type: Number
+        type: String
     },
     name: {
         type: String
     },
     // 课程ID
     classID: {
-        type: Number
+        type: String
     },
     // 课程中文名称
     classNameCN: {
