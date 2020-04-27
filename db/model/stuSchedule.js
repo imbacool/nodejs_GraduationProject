@@ -1,4 +1,4 @@
-//管理员的数据模型
+//学生课表的数据模型
 const mongoose = require("mongoose");
 
 let adminSchema = new mongoose.Schema({
