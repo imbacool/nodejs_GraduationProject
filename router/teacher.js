@@ -8,12 +8,12 @@ let router = express.Router();
 // 增加管理员
 router.post("/add", async (req, res) => {
     let {
-        username,password,adminID,name,cellphone,gender,date,birthdate,hometown,ID,education,faculty,department,major,img
+        username,password,teacherID,name,cellphone,gender,date,birthdate,hometown,ID,education,faculty,department,major,img
     } = req.body;
 
     try {
         await insertTeacher({
-            username,password,adminID,name,cellphone,gender,date,birthdate,hometown,ID,education,faculty,department,major,img
+            username,password,teacherID,name,cellphone,gender,date,birthdate,hometown,ID,education,faculty,department,major,img
         });
         res.send({
             err: 0,

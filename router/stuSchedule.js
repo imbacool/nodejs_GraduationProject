@@ -8,12 +8,12 @@ let router = express.Router();
 // 增加学生课表
 router.post("/add", async (req, res) => {
     let {
-        stuID,name,class1,class2
+        stuID,name,class1,class2,class3,class4,class5,class6,class7,class8,class9,class10,class11,class12,class13,class14,class15
     } = req.body;
 
     try {
         await insertStuSchedule({
-            stuID,name,class1,class2
+            stuID,name,class1,class2,class3,class4,class5,class6,class7,class8,class9,class10,class11,class12,class13,class14,class15
         });
         res.send({
             err: 0,

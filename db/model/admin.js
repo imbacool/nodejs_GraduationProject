@@ -9,13 +9,13 @@ let adminSchema = new mongoose.Schema({
         type: String
     },
     adminID: {
-        type: Number
+        type: String
     },
     name: {
         type: String
     },
     cellphone: {
-        type: Number
+        type: String
     },
     gender: {
         type: String
@@ -32,7 +32,7 @@ let adminSchema = new mongoose.Schema({
     },
     // 身份证
     ID: {
-        type: Number
+        type: String
     },
     // 学历
     education: {
