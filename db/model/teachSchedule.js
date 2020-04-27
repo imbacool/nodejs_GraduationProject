@@ -1,56 +1,51 @@
-//管理员的数据模型
+//教师课表的数据模型
 const mongoose = require("mongoose");
 
-let adminSchema = new mongoose.Schema({
-    username: {
-        type: String
-    },
-    password: {
-        type: String
-    },
-    adminID: {
+let teachScheduleSchema = new mongoose.Schema({
+    teacherID: {
         type: Number
     },
     name: {
         type: String
     },
-    cellphone: {
+    // 课程ID
+    classID: {
         type: Number
     },
-    gender: {
+    // 课程中文名称
+    classNameCN: {
         type: String
     },
-    // 入职日期
-    date: {
+    // 课程英文名称
+    classNameEN: {
         type: String
     },
-    birthdate: {
+    // 学分
+    credits: {
         type: String
     },
-    hometown: {
+    // 学时
+    classHours: {
         type: String
     },
-    // 身份证
-    ID: {
-        type: Number
-    },
-    // 学历
-    education: {
+    // 课程类别
+    classType: {
         type: String
     },
-    // 学院
+    // 开课学院
     faculty: {
         type: String
     },
-    // 系
-    department: {
+    // 课程简介
+    classInfo: {
         type: String
     },
-    // 专业
-    major: {
+    // 上课时间
+    classTime: {
         type: String
     },
-    img: {
+    // 上课地点
+    classroom: {
         type: String
     },
 }, {
@@ -59,6 +54,6 @@ let adminSchema = new mongoose.Schema({
 });
 
 // 创建数据模型
-let adminModel = mongoose.model("admin", adminSchema);
+let teachScheduleModel = mongoose.model("teachSchedule", teachScheduleSchema);
 
-module.exports = adminModel;
+module.exports = teachScheduleModel;

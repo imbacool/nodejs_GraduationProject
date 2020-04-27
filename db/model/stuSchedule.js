@@ -1,57 +1,19 @@
 //学生课表的数据模型
 const mongoose = require("mongoose");
 
-let adminSchema = new mongoose.Schema({
-    username: {
-        type: String
-    },
-    password: {
-        type: String
-    },
-    adminID: {
+let stuScheduleSchema = new mongoose.Schema({
+    stuID: {
         type: Number
     },
     name: {
         type: String
     },
-    cellphone: {
-        type: Number
+    // 对象里包括classID(Number)和成绩result(String,默认空字符串)
+    class1: {
+        type: Object
     },
-    gender: {
-        type: String
-    },
-    // 入职日期
-    date: {
-        type: String
-    },
-    birthdate: {
-        type: String
-    },
-    hometown: {
-        type: String
-    },
-    // 身份证
-    ID: {
-        type: Number
-    },
-    // 学历
-    education: {
-        type: String
-    },
-    // 学院
-    faculty: {
-        type: String
-    },
-    // 系
-    department: {
-        type: String
-    },
-    // 专业
-    major: {
-        type: String
-    },
-    img: {
-        type: String
+    class2: {
+        type: Object
     },
 }, {
     // 删掉数据库的_V
@@ -59,6 +21,6 @@ let adminSchema = new mongoose.Schema({
 });
 
 // 创建数据模型
-let adminModel = mongoose.model("admin", adminSchema);
+let stuScheduleModel = mongoose.model("stuSchedule", stuScheduleSchema);
 
-module.exports = adminModel;
+module.exports = stuScheduleModel;

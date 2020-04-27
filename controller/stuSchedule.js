@@ -1,18 +1,18 @@
-const adminModel = require("../db/model/admin");
+const stuScheduleModel = require("../db/model/stuSchedule");
 
-// 添加管理员
-let insertAdmin = obj => adminModel.insertMany(obj);
+// 添加学生课表
+let insertStuSchedule = obj => stuScheduleModel.insertMany(obj);
 
-// // 删除管理员
+// // 删除学生课表
 // let deleteAdmin = _id => adminModel.deleteOne(_id);
 
-// // 修改管理员
+// // 修改学生课表
 // let updateAdmin = (_id, obj) => adminModel.updateOne(_id, obj);
 
-// // 修改管理员状态
+// // 修改学生课表状态
 // let changeState = (_id, state) => adminModel.updateOne(_id, state);
 
-// // 查询管理员(分页)
+// // 查询学生课表(分页)
 // let findAdminByPage = async (page, pageSize) => {
 //     // 按照一定条件查询
 //     let data = await adminModel.find();
@@ -27,9 +27,9 @@ let insertAdmin = obj => adminModel.insertMany(obj);
 //     }
 // };
 
-// // 查询一个管理员
+// // 查询一个学生课表
 // let findAdminById = _id => adminModel.findOne(_id);
 
 module.exports = {
-    insertAdmin,
+    insertStuSchedule,
 };

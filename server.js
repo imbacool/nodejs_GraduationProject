@@ -17,14 +17,14 @@ app.use("/public", express.static(path.join(__dirname, "./public")));
 const adminRouter = require("./router/admin");
 const studentRouter = require("./router/student");
 const teacherRouter = require("./router/teacher");
-const studentRouter = require("./router/student");
-const studentRouter = require("./router/student");
+const stuScheduleRouter = require("./router/stuSchedule");
+const teachScheduleRouter = require("./router/teachSchedule");
 
 app.use("/admin", adminRouter);
 app.use("/student", studentRouter);
 app.use("/teacher", teacherRouter);
-app.use("/student", studentRouter);
-app.use("/student", studentRouter);
+app.use("/stuSchedule", stuScheduleRouter);
+app.use("/teachSchedule", teachScheduleRouter);
 
 app.listen(2020, () => {
     console.log("服务器已启动，端口2020");

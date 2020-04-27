@@ -1,19 +1,19 @@
 const express = require("express");
 const {
-    insertAdmin,
-} = require("../controller/admin");
+    insertStuSchedule,
+} = require("../controller/stuSchedule");
 
 let router = express.Router();
 
-// 增加管理员
+// 增加学生课表
 router.post("/add", async (req, res) => {
     let {
-        username,password,adminID,name,cellphone,gender,date,birthdate,hometown,ID,education,faculty,department,major,img
+        stuID,name,class1,class2
     } = req.body;
 
     try {
-        await insertAdmin({
-            username,password,adminID,name,cellphone,gender,date,birthdate,hometown,ID,education,faculty,department,major,img
+        await insertStuSchedule({
+            stuID,name,class1,class2
         });
         res.send({
             err: 0,
@@ -27,7 +27,7 @@ router.post("/add", async (req, res) => {
     };
 });
 
-// // 删除管理员
+// // 删除学生课表
 // router.delete("/del", async (req, res) => {
 //     let {
 //         _id
@@ -49,7 +49,7 @@ router.post("/add", async (req, res) => {
 //     };
 // })
 
-// // 修改管理员
+// // 修改学生课表
 // router.put("/update", async (req, res) => {
 //     let {
 //         _id,
@@ -74,7 +74,7 @@ router.post("/add", async (req, res) => {
 //     };
 // })
 
-// // 修改管理员状态
+// // 修改学生课表状态
 // router.put("/state", async (req, res) => {
 //     let {
 //         _id,
@@ -99,7 +99,7 @@ router.post("/add", async (req, res) => {
 //     };
 // })
 
-// // 查询管理员(分页)
+// // 查询学生课表(分页)
 // router.get("/findByPage", async (req, res) => {
 //     let {
 //         page,
@@ -124,7 +124,7 @@ router.post("/add", async (req, res) => {
 //     };
 // })
 
-// // 查询一个管理员
+// // 查询一个学生课表
 // router.get("/findById", async (req, res) => {
 //     let {
 //         _id
