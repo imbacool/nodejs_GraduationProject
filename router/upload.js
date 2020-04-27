@@ -6,6 +6,7 @@ const path = require('path')
 const upload = multer({})
 const router = express.Router()
 
+// 上传图片
 router.post('/img', upload.single('img'), (req, res) => {
     let { buffer, mimetype, size } = req.file
     // 判断图片大小(5M)

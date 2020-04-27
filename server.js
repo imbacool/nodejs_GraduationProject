@@ -19,12 +19,14 @@ const studentRouter = require("./router/student");
 const teacherRouter = require("./router/teacher");
 const stuScheduleRouter = require("./router/stuSchedule");
 const teachScheduleRouter = require("./router/teachSchedule");
+const uploadRouter = require("./router/upload");
 
 app.use("/admin", adminRouter);
 app.use("/student", studentRouter);
 app.use("/teacher", teacherRouter);
 app.use("/stuSchedule", stuScheduleRouter);
 app.use("/teachSchedule", teachScheduleRouter);
+app.use("/upload", uploadRouter);
 
 app.listen(2020, () => {
     console.log("服务器已启动，端口2020");
