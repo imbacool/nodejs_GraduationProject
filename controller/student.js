@@ -9,8 +9,8 @@ let insertStu = obj => studentModel.insertMany(obj);
 // // 修改学生
 // let updatestu = (_id, obj) => studentModel.updateOne(_id, obj);
 
-// // 修改学生状态
-// let changeState = (_id, state) => studentModel.updateOne(_id, state);
+// 修改学生(密码)
+let changePSW = (username,password) => studentModel.updateOne(username,password);
 
 // // 查询学生(分页)
 // let findstuByPage = async (page, pageSize) => {
@@ -27,9 +27,11 @@ let insertStu = obj => studentModel.insertMany(obj);
 //     }
 // };
 
-// // 查询一个学生
-// let findstuById = _id => studentModel.findOne(_id);
+// 查询一个学生
+let stuLogin = (username,password) => studentModel.findOne(username,password);
 
 module.exports = {
     insertStu,
+    stuLogin,
+    changePSW,
 };

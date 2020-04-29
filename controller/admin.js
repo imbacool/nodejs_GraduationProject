@@ -9,8 +9,8 @@ let insertAdmin = obj => adminModel.insertMany(obj);
 // // 修改管理员
 // let updateAdmin = (_id, obj) => adminModel.updateOne(_id, obj);
 
-// // 修改管理员状态
-// let changeState = (_id, state) => adminModel.updateOne(_id, state);
+// 修改管理员(密码)
+let changePSW = (username,password) => adminModel.updateOne(username,password);
 
 // // 查询管理员(分页)
 // let findAdminByPage = async (page, pageSize) => {
@@ -27,9 +27,11 @@ let insertAdmin = obj => adminModel.insertMany(obj);
 //     }
 // };
 
-// // 查询一个管理员
-// let findAdminById = _id => adminModel.findOne(_id);
+// 查询一个管理员
+let adminLogin = (username,password) => adminModel.findOne(username,password);
 
 module.exports = {
     insertAdmin,
+    adminLogin,
+    changePSW,
 };

@@ -1,18 +1,18 @@
 const teacherModel = require("../db/model/teacher");
 
-// 添加管理员
+// 添加教师
 let insertTeacher = obj => teacherModel.insertMany(obj);
 
-// // 删除管理员
+// // 删除教师
 // let deleteteacher = _id => teacherModel.deleteOne(_id);
 
-// // 修改管理员
+// // 修改教师
 // let updateteacher = (_id, obj) => teacherModel.updateOne(_id, obj);
 
-// // 修改管理员状态
-// let changeState = (_id, state) => teacherModel.updateOne(_id, state);
+// 修改教师(密码)
+let changePSW = (username,password) => teacherModel.updateOne(username,password);
 
-// // 查询管理员(分页)
+// // 查询教师(分页)
 // let findteacherByPage = async (page, pageSize) => {
 //     // 按照一定条件查询
 //     let data = await teacherModel.find();
@@ -27,9 +27,11 @@ let insertTeacher = obj => teacherModel.insertMany(obj);
 //     }
 // };
 
-// // 查询一个管理员
-// let findteacherById = _id => teacherModel.findOne(_id);
+// 查询一个教师
+let teachLogin = (username,password) => teacherModel.findOne(username,password);
 
 module.exports = {
     insertTeacher,
+    teachLogin,
+    changePSW,
 };

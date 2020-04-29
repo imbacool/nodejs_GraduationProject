@@ -1,11 +1,13 @@
 const express = require("express");
 const {
     insertTeacher,
+    teachLogin,
+    changePSW,
 } = require("../controller/teacher");
 
 let router = express.Router();
 
-// 增加管理员
+// 增加教师
 router.post("/add", async (req, res) => {
     let {
         username,password,teacherID,name,cellphone,gender,date,birthdate,hometown,ID,education,faculty,department,major,img
@@ -27,7 +29,7 @@ router.post("/add", async (req, res) => {
     };
 });
 
-// // 删除管理员
+// // 删除教师
 // router.delete("/del", async (req, res) => {
 //     let {
 //         _id
@@ -49,7 +51,7 @@ router.post("/add", async (req, res) => {
 //     };
 // })
 
-// // 修改管理员
+// // 修改教师
 // router.put("/update", async (req, res) => {
 //     let {
 //         _id,
@@ -74,32 +76,31 @@ router.post("/add", async (req, res) => {
 //     };
 // })
 
-// // 修改管理员状态
-// router.put("/state", async (req, res) => {
-//     let {
-//         _id,
-//         state
-//     } = req.body;
+// 修改教师(密码)
+router.put("/changePSW", async (req, res) => {
+    let {
+       username,password
+    } = req.body;
 
-//     try {
-//         await changeState({
-//             _id
-//         }, {
-//             state
-//         });
-//         res.send({
-//             err: 0,
-//             msg: "ok"
-//         });
-//     } catch (err) {
-//         res.send({
-//             err: -1,
-//             msg: err
-//         });
-//     };
-// })
+    try {
+        await changePSW({
+            username
+        }, {
+            password
+        });
+        res.send({
+            err: 0,
+            msg: "ok"
+        });
+    } catch (err) {
+        res.send({
+            err: -1,
+            msg: err
+        });
+    };
+})
 
-// // 查询管理员(分页)
+// // 查询教师(分页)
 // router.get("/findByPage", async (req, res) => {
 //     let {
 //         page,
@@ -124,26 +125,25 @@ router.post("/add", async (req, res) => {
 //     };
 // })
 
-// // 查询一个管理员
-// router.get("/findById", async (req, res) => {
-//     let {
-//         _id
-//     } = req.query;
+// 查询一个教师(登录)
+router.get("/login", async (req, res) => {
+    let {
+        username,password
+    } = req.query;
 
-//     try {
-//         let data = await findGoodsById({_id});
-//         res.send({
-//             err: 0,
-//             msg: "ok",
-//             data
-//         });
-//     } catch (err) {
-//         res.send({
-//             err: -1,
-//             msg: err,
-//             data:{}
-//         });
-//     };
-// })
+    try {
+        let data = await teachLogin({username,password});
+        res.send({
+            err: 0,
+            msg: "ok",
+            data
+        });
+    } catch (err) {
+        res.send({
+            err: -1,
+            msg: err,
+        });
+    };
+})
 
 module.exports = router;
