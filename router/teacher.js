@@ -3,6 +3,7 @@ const {
     insertTeacher,
     teachLogin,
     changePSW,
+    updateTeacher,
 } = require("../controller/teacher");
 
 let router = express.Router();
@@ -51,30 +52,29 @@ router.post("/add", async (req, res) => {
 //     };
 // })
 
-// // 修改教师
-// router.put("/update", async (req, res) => {
-//     let {
-//         _id,
-//         name,desc,price,num,type,img,state,date,hits,publisher
-//     } = req.body;
+// 修改教师
+router.put("/update", async (req, res) => {
+    let {
+        username,name,cellphone,gender,date,birthdate,hometown,ID,education,faculty,department,major,img
+    } = req.body.obj;
 
-//     try {
-//         await updateGoods({
-//             _id
-//         }, {
-//             name,desc,price,num,type,img,state,date,hits,publisher
-//         });
-//         res.send({
-//             err: 0,
-//             msg: "ok"
-//         });
-//     } catch (err) {
-//         res.send({
-//             err: -1,
-//             msg: err
-//         });
-//     };
-// })
+    try {
+        await updateTeacher({
+            username
+        }, {
+            name,cellphone,gender,date,birthdate,hometown,ID,education,faculty,department,major,img
+        });
+        res.send({
+            err: 0,
+            msg: "ok"
+        });
+    } catch (err) {
+        res.send({
+            err: -1,
+            msg: err
+        });
+    };
+})
 
 // 修改教师(密码)
 router.put("/changePSW", async (req, res) => {
@@ -125,7 +125,7 @@ router.put("/changePSW", async (req, res) => {
 //     };
 // })
 
-// 查询一个教师(登录)
+// 查询一个教师(登录+个人信息)
 router.get("/login", async (req, res) => {
     let {
         username,password

@@ -6,8 +6,8 @@ let insertStu = obj => studentModel.insertMany(obj);
 // // 删除学生
 // let deletestu = _id => studentModel.deleteOne(_id);
 
-// // 修改学生
-// let updatestu = (_id, obj) => studentModel.updateOne(_id, obj);
+// 修改学生
+let updateStu = (username, obj) => studentModel.updateOne(username, obj);
 
 // 修改学生(密码)
 let changePSW = (username,password) => studentModel.updateOne(username,password);
@@ -34,4 +34,5 @@ module.exports = {
     insertStu,
     stuLogin,
     changePSW,
+    updateStu,
 };
