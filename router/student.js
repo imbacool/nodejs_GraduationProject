@@ -4,6 +4,9 @@ const {
     stuLogin,
     changePSW,
     updateStu,
+    deleteStu,
+    findStu,
+    findByID,
 } = require("../controller/student");
 
 let router = express.Router();
@@ -33,12 +36,12 @@ router.post("/add", async (req, res) => {
 // 删除学生
 router.delete("/del", async (req, res) => {
     let {
-        _id
+        stuID
     } = req.body;
 
     try {
-        await deleteGoods({
-            _id
+        await deleteStu({
+            stuID
         });
         res.send({
             err: 0,
@@ -100,27 +103,19 @@ router.put("/changePSW", async (req, res) => {
     };
 })
 
-// 查询学生(分页)
-router.get("/findByPage", async (req, res) => {
-    let {
-        page,
-        pageSize
-    } = req.query;
-
+// 查询学生
+router.get("/find", async (req, res) => {
     try {
-        let data = await findGoodsByPage(page,pageSize);
+        let data = await findStu();
         res.send({
             err: 0,
             msg: "ok",
-            count: data.count,
-            list: data.list
+            data
         });
     } catch (err) {
         res.send({
             err: -1,
             msg: err,
-            count: 0,
-            list: []
         });
     };
 })
@@ -146,14 +141,14 @@ router.get("/login", async (req, res) => {
     };
 })
 
-// 查询一个学生(登录+个人信息)
-router.get("/login", async (req, res) => {
+// 查询一个学生(stuID)
+router.get("/findByID", async (req, res) => {
     let {
-        username,password
+        stuID
     } = req.query;
 
     try {
-        let data = await stuLogin({username,password});
+        let data = await findByID({stuID});
         res.send({
             err: 0,
             msg: "ok",
