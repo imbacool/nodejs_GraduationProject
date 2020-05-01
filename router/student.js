@@ -15,7 +15,7 @@ let router = express.Router();
 router.post("/add", async (req, res) => {
     let {
         username,password,stuID,name,cellphone,gender,date,birthdate,hometown,ID,education,faculty,department,major,direction,Class,grade,img
-    } = req.body;
+    } = req.body.obj;
 
     try {
         await insertStu({
