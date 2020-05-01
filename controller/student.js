@@ -1,6 +1,6 @@
 const studentModel = require("../db/model/student");
 
-// 添加学生
+// 增加学生
 let insertStu = obj => studentModel.insertMany(obj);
 
 // 删除学生
@@ -15,7 +15,7 @@ let changePSW = (username,password) => studentModel.updateOne(username,password)
 // 查询学生
 let findStu = ()=>studentModel.find();
 
-// 查询一个学生
+// 查询一个学生(登录+个人信息)
 let stuLogin = (username, password) => studentModel.findOne(username, password);
 
 // 查询一个学生(stuID)

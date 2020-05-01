@@ -1,6 +1,6 @@
 const teacherModel = require("../db/model/teacher");
 
-// 添加教师
+// 增加教师
 let insertTeacher = obj => teacherModel.insertMany(obj);
 
 // 删除教师
@@ -15,7 +15,7 @@ let changePSW = (username,password) => teacherModel.updateOne(username,password)
 // 查询教师
 let findTeacher = ()=>teacherModel.find();
 
-// 查询一个教师
+// 查询一个教师(登录+个人信息)
 let teachLogin = (username, password) => teacherModel.findOne(username, password);
 
 // 查询一个教师(teacherID)
