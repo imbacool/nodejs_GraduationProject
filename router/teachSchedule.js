@@ -13,7 +13,7 @@ let router = express.Router();
 router.post("/add", async (req, res) => {
     let {
         teacherID,name,classID,classNameCN,classNameEN,credits,classHours,classType,faculty,classInfo,classTime,classroom
-    } = req.body;
+    } = req.body.obj;
 
     try {
         await insertTeachSchedule({
@@ -57,7 +57,7 @@ router.delete("/del", async (req, res) => {
 router.put("/update", async (req, res) => {
     let {
         teacherID,name,classID,classNameCN,classNameEN,credits,classHours,classType,faculty,classInfo,classTime,classroom
-    } = req.body;
+    } = req.body.obj;
 
     try {
         await updateTeachSchedule({
