@@ -13,7 +13,7 @@ let router = express.Router();
 router.post("/add", async (req, res) => {
     let {
         stuID,stuName,teacherID,teacherName,classID,classNameCN,classTime,classroom,result
-    } = req.body;
+    } = req.body.obj;
 
     try {
         await addClass({
@@ -35,7 +35,7 @@ router.post("/add", async (req, res) => {
 router.put("/update", async (req, res) => {
     let {
         stuID,classID,result
-    } = req.body;
+    } = req.body.obj;
 
     try {
         await updateClass({
