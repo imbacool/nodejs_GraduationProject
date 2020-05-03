@@ -1,20 +1,24 @@
 const stuScheduleModel = require("../db/model/stuSchedule");
 
-// 添加学生课表
-let insertStuSchedule = obj => stuScheduleModel.insertMany(obj);
+// 增加学生课程
+let addClass = obj => stuScheduleModel.insertMany(obj);
 
-// 修改一个学生的课表(选择一节课程或删除一节课程)
-let seleteClass = (stuID,classNumber) => stuScheduleModel.updateOne(stuID,classNumber);
+// 修改学生课程(result)
+let updateClass = (obj,result) => stuScheduleModel.updateOne(obj,result);
+
+// 删除学生课程
+let deleteClass = (stuID,classID) => stuScheduleModel.deleteOne(stuID,classID);
 
 // 查询一个学生的所有课程
-let findByID = stuID => stuScheduleModel.findOne(stuID);
+let findByStuID = (stuID) => stuScheduleModel.find(stuID);
 
-// 查询学生课表
-let find = () => stuScheduleModel.find();
+// 查询一个教师的所有课程(result)
+let findByTeacherID = (teacherID) => stuScheduleModel.find(teacherID);
 
 module.exports = {
-    insertStuSchedule,
-    seleteClass,
-    findByID,
-    find,
+    addClass,
+    updateClass,
+    deleteClass,
+    findByStuID,
+    findByTeacherID,
 };

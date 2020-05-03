@@ -1,22 +1,23 @@
 const express = require("express");
 const {
-    insertStuSchedule,
-    seleteClass,
-    findByID,
-    find,
+    addClass,
+    updateClass,
+    deleteClass,
+    findByStuID,
+    findByTeacherID,
 } = require("../controller/stuSchedule");
 
 let router = express.Router();
 
-// 增加学生课表
+// 增加学生课程
 router.post("/add", async (req, res) => {
     let {
-        stuID,name,class1,class2,class3,class4,class5,class6,class7,class8,class9,class10,class11,class12,class13,class14,class15
+        stuID,stuName,teacherID,teacherName,classID,classNameCN,classTime,classroom,result
     } = req.body;
 
     try {
-        await insertStuSchedule({
-            stuID,name,class1,class2,class3,class4,class5,class6,class7,class8,class9,class10,class11,class12,class13,class14,class15
+        await addClass({
+            stuID,stuName,teacherID,teacherName,classID,classNameCN,classTime,classroom,result
         });
         res.send({
             err: 0,
@@ -30,18 +31,39 @@ router.post("/add", async (req, res) => {
     };
 });
 
-// 修改一个学生的课表(选择一节课程或删除一节课程)
+// 修改学生课程(result)
 router.put("/update", async (req, res) => {
     let {
-        stuID,
-        classNumber
+        stuID,classID,result
     } = req.body;
 
     try {
-        await seleteClass({
-            stuID
+        await updateClass({
+            stuID,classID
         }, {
-            classNumber
+            result
+        });
+        res.send({
+            err: 0,
+            msg: "ok"
+        });
+    } catch (err) {
+        res.send({
+            err: -1,
+            msg: err
+        });
+    };
+})
+
+// 删除学生课程
+router.delete("/del", async (req, res) => {
+    let {
+        stuID,classID
+    } = req.body;
+
+    try {
+        await deleteClass({
+            stuID,classID
         });
         res.send({
             err: 0,
@@ -56,13 +78,13 @@ router.put("/update", async (req, res) => {
 })
 
 // 查询一个学生的所有课程
-router.get("/findById", async (req, res) => {
+router.get("/findByStuID", async (req, res) => {
     let {
         stuID
     } = req.query;
 
     try {
-        let data = await findByID({stuID});
+        let data = await findByStuID({stuID});
         res.send({
             err: 0,
             msg: "ok",
@@ -76,10 +98,14 @@ router.get("/findById", async (req, res) => {
     };
 })
 
-// 查询学生课表
-router.get("/find", async (req, res) => {
+// 查询一个教师的所有课程(result)
+router.get("/findByTeacherID", async (req, res) => {
+    let {
+        teacherID
+    } = req.query;
+
     try {
-        let data = await find();
+        let data = await findByTeacherID({teacherID});
         res.send({
             err: 0,
             msg: "ok",
