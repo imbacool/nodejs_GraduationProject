@@ -5,53 +5,28 @@ let stuScheduleSchema = new mongoose.Schema({
     stuID: {
         type: String
     },
-    name: {
+    stuName: {
         type: String
     },
-    // String格式：classID/result(默认-),如：111/- 或者 222/98
-    class1: {
+    teacherID: {
         type: String
     },
-    class2: {
+    teacherName: {
         type: String
     },
-    class3: {
+    classID: {
         type: String
     },
-    class4: {
+    classNameCN: {
         type: String
     },
-    class5: {
+    classTime: {
         type: String
     },
-    class6: {
+    classroom: {
         type: String
     },
-    class7: {
-        type: String
-    },
-    class8: {
-        type: String
-    },
-    class9: {
-        type: String
-    },
-    class10: {
-        type: String
-    },
-    class11: {
-        type: String
-    },
-    class12: {
-        type: String
-    },
-    class13: {
-        type: String
-    },
-    class14: {
-        type: String
-    },
-    class15: {
+    result: {
         type: String
     },
 }, {
