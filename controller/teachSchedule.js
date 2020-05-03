@@ -12,8 +12,11 @@ let updateTeachSchedule = (classID, obj) => teachScheduleModel.updateOne(classID
 // 查询教师课表
 let findTeachSchedule = ()=>teachScheduleModel.find();
 
-// 查询一个教师课表(classID)
+// 查询一个课程(classID)
 let findByID = classID => teachScheduleModel.findOne(classID);
+
+// 查询一个教师的所有课程(teacherID)
+let findByTeacherID = classID => teachScheduleModel.find(classID);
 
 module.exports = {
     insertTeachSchedule,
@@ -21,4 +24,5 @@ module.exports = {
     updateTeachSchedule,
     findTeachSchedule,
     findByID,
+    findByTeacherID,
 };

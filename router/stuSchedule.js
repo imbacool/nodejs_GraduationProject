@@ -1,6 +1,9 @@
 const express = require("express");
 const {
     insertStuSchedule,
+    seleteClass,
+    findByID,
+    find,
 } = require("../controller/stuSchedule");
 
 let router = express.Router();
@@ -27,123 +30,67 @@ router.post("/add", async (req, res) => {
     };
 });
 
-// // 删除学生课表
-// router.delete("/del", async (req, res) => {
-//     let {
-//         _id
-//     } = req.body;
+// 修改一个学生的课表(选择一节课程或删除一节课程)
+router.put("/update", async (req, res) => {
+    let {
+        stuID,
+        classNumber
+    } = req.body;
 
-//     try {
-//         await deleteGoods({
-//             _id
-//         });
-//         res.send({
-//             err: 0,
-//             msg: "ok"
-//         });
-//     } catch (err) {
-//         res.send({
-//             err: -1,
-//             msg: err
-//         });
-//     };
-// })
+    try {
+        await seleteClass({
+            stuID
+        }, {
+            classNumber
+        });
+        res.send({
+            err: 0,
+            msg: "ok"
+        });
+    } catch (err) {
+        res.send({
+            err: -1,
+            msg: err
+        });
+    };
+})
 
-// // 修改学生课表
-// router.put("/update", async (req, res) => {
-//     let {
-//         _id,
-//         name,desc,price,num,type,img,state,date,hits,publisher
-//     } = req.body;
+// 查询一个学生的所有课程
+router.get("/findById", async (req, res) => {
+    let {
+        stuID
+    } = req.query;
 
-//     try {
-//         await updateGoods({
-//             _id
-//         }, {
-//             name,desc,price,num,type,img,state,date,hits,publisher
-//         });
-//         res.send({
-//             err: 0,
-//             msg: "ok"
-//         });
-//     } catch (err) {
-//         res.send({
-//             err: -1,
-//             msg: err
-//         });
-//     };
-// })
+    try {
+        let data = await findByID({stuID});
+        res.send({
+            err: 0,
+            msg: "ok",
+            data
+        });
+    } catch (err) {
+        res.send({
+            err: -1,
+            msg: err,
+        });
+    };
+})
 
-// // 修改学生课表状态
-// router.put("/state", async (req, res) => {
-//     let {
-//         _id,
-//         state
-//     } = req.body;
-
-//     try {
-//         await changeState({
-//             _id
-//         }, {
-//             state
-//         });
-//         res.send({
-//             err: 0,
-//             msg: "ok"
-//         });
-//     } catch (err) {
-//         res.send({
-//             err: -1,
-//             msg: err
-//         });
-//     };
-// })
-
-// // 查询学生课表(分页)
-// router.get("/findByPage", async (req, res) => {
-//     let {
-//         page,
-//         pageSize
-//     } = req.query;
-
-//     try {
-//         let data = await findGoodsByPage(page,pageSize);
-//         res.send({
-//             err: 0,
-//             msg: "ok",
-//             count: data.count,
-//             list: data.list
-//         });
-//     } catch (err) {
-//         res.send({
-//             err: -1,
-//             msg: err,
-//             count: 0,
-//             list: []
-//         });
-//     };
-// })
-
-// // 查询一个学生课表
-// router.get("/findById", async (req, res) => {
-//     let {
-//         _id
-//     } = req.query;
-
-//     try {
-//         let data = await findGoodsById({_id});
-//         res.send({
-//             err: 0,
-//             msg: "ok",
-//             data
-//         });
-//     } catch (err) {
-//         res.send({
-//             err: -1,
-//             msg: err,
-//             data:{}
-//         });
-//     };
-// })
+// 查询学生课表
+router.get("/find", async (req, res) => {
+    try {
+        let data = await find();
+        res.send({
+            err: 0,
+            msg: "ok",
+            data
+        });
+    } catch (err) {
+        res.send({
+            err: -1,
+            msg: err,
+        });
+    };
+})
 
 module.exports = router;

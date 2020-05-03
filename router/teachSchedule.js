@@ -5,6 +5,7 @@ const {
     updateTeachSchedule,
     findTeachSchedule,
     findByID,
+    findByTeacherID,
 } = require("../controller/teachSchedule");
 
 let router = express.Router();
@@ -94,7 +95,7 @@ router.get("/find", async (req, res) => {
     };
 })
 
-// 查询一个教师课表(classID)
+// 查询一个课程(classID)
 router.get("/findByID", async (req, res) => {
     let {
         classID
@@ -111,7 +112,27 @@ router.get("/findByID", async (req, res) => {
         res.send({
             err: -1,
             msg: err,
-            data:{}
+        });
+    };
+})
+
+// 查询一个教师的所有课程(teacherID)
+router.get("/findByTeacherID", async (req, res) => {
+    let {
+        teacherID
+    } = req.query;
+
+    try {
+        let data = await findByTeacherID({teacherID});
+        res.send({
+            err: 0,
+            msg: "ok",
+            data
+        });
+    } catch (err) {
+        res.send({
+            err: -1,
+            msg: err,
         });
     };
 })
